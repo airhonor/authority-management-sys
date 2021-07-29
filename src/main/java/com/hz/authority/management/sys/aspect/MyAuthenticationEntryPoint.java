@@ -14,13 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.Serializable;
 
+
 /**
- * @Author 李号东
- * @Description 认证失败处理类 返回401
- * @Date 00:32 2019-03-17
- * @Param
- * @return
- **/
+ * @author honorzhang
+ */
 @Slf4j
 @Component
 public class MyAuthenticationEntryPoint implements AuthenticationEntryPoint, Serializable {

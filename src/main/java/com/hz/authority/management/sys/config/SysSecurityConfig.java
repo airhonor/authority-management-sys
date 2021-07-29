@@ -2,6 +2,8 @@ package com.hz.authority.management.sys.config;
 
 import com.hz.authority.management.sys.aspect.AuthenticationTokenFilter;
 import com.hz.authority.management.sys.aspect.MyAuthenticationEntryPoint;
+import com.hz.authority.management.sys.handler.SysLogoutHandler;
+import com.hz.authority.management.sys.handler.SysLogoutSuccessHandler;
 import com.hz.authority.management.sys.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

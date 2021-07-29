@@ -1,4 +1,4 @@
-package com.hz.authority.management.sys.config;
+package com.hz.authority.management.sys.handler;
 
 import com.hz.authority.management.sys.constant.Constant;
 import com.hz.authority.management.sys.constant.ResultCode;

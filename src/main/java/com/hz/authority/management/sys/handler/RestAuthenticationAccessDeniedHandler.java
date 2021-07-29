@@ -1,4 +1,4 @@
-package com.hz.authority.management.sys.aspect;
+package com.hz.authority.management.sys.handler;
 
 import com.hz.authority.management.sys.constant.ResultCode;
 import com.hz.authority.management.sys.utils.ResultUtil;
