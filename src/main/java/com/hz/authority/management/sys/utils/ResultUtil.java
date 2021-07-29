@@ -17,7 +17,7 @@ import java.io.PrintWriter;
  */
 public class ResultUtil {
 
-    public static void writeJavaScript(HttpServletResponse response, ResultCode resultCode, String msg) throws IOException {
+    public static void writeResponse(HttpServletResponse response, ResultCode resultCode, String msg) throws IOException {
         response.setHeader("Access-Control-Allow-Origin", "*");
         // 状态
         response.setStatus(200);

@@ -1,6 +1,5 @@
 package com.hz.authority.management.sys.service.impl;
 
-import com.hz.authority.management.sys.constant.ResultCode;
 import com.hz.authority.management.sys.entity.LoginUserEntity;
 import com.hz.authority.management.sys.entity.authority.SysUserDetails;
 import com.hz.authority.management.sys.exception.PermissionDeniedException;
@@ -54,7 +53,7 @@ public class LoginServiceImpl implements LoginService {
             // 如果正确，则存储该用户名密码到security 的 context中
             return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
         } catch (DisabledException | BadCredentialsException e) {
-            throw new PermissionDeniedException(ResultCode.UN_AUTHORIZED);
+            throw new PermissionDeniedException("用户名或密码错误，请重新登录");
         }
     }
 }

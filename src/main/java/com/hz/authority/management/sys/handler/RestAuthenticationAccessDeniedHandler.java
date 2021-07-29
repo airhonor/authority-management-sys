@@ -26,6 +26,6 @@ public class RestAuthenticationAccessDeniedHandler implements AccessDeniedHandle
     public void handle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AccessDeniedException e) throws IOException {
         StringBuilder msg = new StringBuilder("请求: ").append(httpServletRequest.getRequestURI()).append(" 权限不足，无法访问系统资源.");
         log.info(msg.toString());
-        ResultUtil.writeJavaScript(httpServletResponse, ResultCode.REQ_REJECT, msg.toString());
+        ResultUtil.writeResponse(httpServletResponse, ResultCode.REQ_REJECT, msg.toString());
     }
 }

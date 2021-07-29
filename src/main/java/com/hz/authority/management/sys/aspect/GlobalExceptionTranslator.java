@@ -5,6 +5,7 @@ import com.hz.authority.management.sys.exception.PermissionDeniedException;
 import com.hz.authority.management.sys.response.BaseResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.InsufficientAuthenticationException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -34,6 +35,18 @@ public class GlobalExceptionTranslator {
         return BaseResponse
                 .builder()
                 .code(ResultCode.PARAM_MISS.getCode())
+                .msg(msg)
+                .data(null)
+                .build();
+    }
+
+    @ExceptionHandler(UsernameNotFoundException.class)
+    public BaseResponse<Object> handleError(UsernameNotFoundException e) {
+        log.warn("Missing Request Parameter", e);
+        String msg = String.format("Missing Request Parameter: %s", e.getMessage());
+        return BaseResponse
+                .builder()
+                .code(ResultCode.UN_AUTHORIZED.getCode())
                 .msg(msg)
                 .data(null)
                 .build();

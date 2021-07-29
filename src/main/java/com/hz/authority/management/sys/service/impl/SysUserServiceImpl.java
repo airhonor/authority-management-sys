@@ -22,12 +22,17 @@ public class SysUserServiceImpl implements SysUserService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         log.info("根据用户名{}查询用户信息", username);
         //此处实际可以从数据库中查找对应的用户名
-        User user = User.builder()
-                .id(1)
-                .username("admin")
-                .password("$2a$10$blrIf6.vDYUAGbq.8fk2heScZYVgMl8lFAUWvPi1aZ9aiCar3pALe")
-                .test("this is test")
-                .build();
+        User user;
+        if (username.equals("admin")) {
+            user = User.builder()
+                    .id(1)
+                    .username("admin")
+                    .password("$2a$10$blrIf6.vDYUAGbq.8fk2heScZYVgMl8lFAUWvPi1aZ9aiCar3pALe")
+                    .test("this is test")
+                    .build();
+        } else {
+            throw new UsernameNotFoundException(username + "不存在");
+        }
         Role role = Role.builder()
                 .id(1)
                 .name("admin")

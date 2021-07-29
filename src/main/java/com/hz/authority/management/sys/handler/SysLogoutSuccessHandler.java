@@ -23,6 +23,6 @@ public class SysLogoutSuccessHandler implements LogoutSuccessHandler {
     @Override
     public void onLogoutSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
         //登出成功的执行的逻辑
-        ResultUtil.writeJavaScript(httpServletResponse, ResultCode.SUCCESS, ResultCode.SUCCESS.getMsg());
+        ResultUtil.writeResponse(httpServletResponse, ResultCode.SUCCESS, ResultCode.SUCCESS.getMsg());
     }
 }

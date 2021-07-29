@@ -88,7 +88,8 @@ public class SysSecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Override
     public void configure(WebSecurity web) {
-        web.ignoring().antMatchers("/login", "/success/logout-page");
+        //配置允许匿名访问的接口，比如swagger地址，系统文档地址
+        web.ignoring().antMatchers("/success/logout-page");
     }
 
 
@@ -102,8 +103,6 @@ public class SysSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .formLogin().loginPage("/login").permitAll()
-                .and()
                 .logout().addLogoutHandler(sysLogoutHandler).logoutSuccessHandler(sysLogoutSuccessHandler)
                 .and()
                 // 由于使用的是JWT，我们这里不需要csrf
@@ -117,7 +116,7 @@ public class SysSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 // 对于登录login要允许匿名访问
                 .antMatchers(HttpMethod.POST, "/login").permitAll()
-                // 访问/user 需要拥有admin权限
+                // 访问接口的测试 需要拥有admin权限，实际环境中，可以配置在filter中进行权限的验证
                 .antMatchers("/test/page").hasAuthority("admin")
                 // 除上面外的所有请求全部需要鉴权认证
                 .anyRequest().authenticated();

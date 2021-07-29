@@ -30,13 +30,13 @@ public class MyAuthenticationEntryPoint implements AuthenticationEntryPoint, Ser
         // 用户登录时身份认证未通过
         if (e instanceof BadCredentialsException) {
             log.info("{} 身份认证失败,无效的凭据", msg.toString());
-            ResultUtil.writeJavaScript(httpServletResponse, ResultCode.UN_AUTHORIZED, e.getMessage());
+            ResultUtil.writeResponse(httpServletResponse, ResultCode.UN_AUTHORIZED, e.getMessage());
         } else if (e instanceof InsufficientAuthenticationException) {
             log.info("{} 身份认证失败,token缺失或无效", msg.toString());
-            ResultUtil.writeJavaScript(httpServletResponse, ResultCode.UN_AUTHORIZED, e.getMessage());
+            ResultUtil.writeResponse(httpServletResponse, ResultCode.UN_AUTHORIZED, e.getMessage());
         } else {
             log.info("{} 身份认证失败,用户token无效.", msg.toString());
-            ResultUtil.writeJavaScript(httpServletResponse, ResultCode.UN_AUTHORIZED, e.getMessage());
+            ResultUtil.writeResponse(httpServletResponse, ResultCode.UN_AUTHORIZED, e.getMessage());
         }
 
     }
