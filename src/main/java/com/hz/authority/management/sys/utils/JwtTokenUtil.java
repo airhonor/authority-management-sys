@@ -86,7 +86,9 @@ public class JwtTokenUtil {
             String username = getUsername(token);
             String roleName = claims.get(Constant.CLAIM_KEY_AUTHORITIES).toString();
             Role role = Role.builder().name(roleName).build();
-            userDetail = new SysUserDetails(userId, username, null, role);
+            List<Role> roles = new ArrayList<>();
+            roles.add(role);
+            userDetail = new SysUserDetails(userId, username, null, roles);
             log.info("user details {}", userDetail.toString());
         } catch (Exception e) {
             log.error("获取用户详情出错", e);

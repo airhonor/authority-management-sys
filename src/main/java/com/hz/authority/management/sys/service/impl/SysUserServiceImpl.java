@@ -9,6 +9,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @program: authority-managment-sys
  * @author: zgr
@@ -33,13 +36,21 @@ public class SysUserServiceImpl implements SysUserService {
         } else {
             throw new UsernameNotFoundException(username + "不存在");
         }
-        Role role = Role.builder()
+        Role role1 = Role.builder()
                 .id(1)
-                .name("admin")
+                .name("READ")
                 .build();
+        Role role2 = Role.builder()
+                .id(1)
+                .name("WRITE")
+                .build();
+
+        List<Role> roles = new ArrayList<>();
+        roles.add(role1);
+        roles.add(role2);
 
 
         //这里权限列表,这个为方便直接下（实际开发中查询用户时连表查询出权限）
-        return new SysUserDetails(user.getId(), user.getUsername(), user.getPassword(), role);
+        return new SysUserDetails(user.getId(), user.getUsername(), user.getPassword(), roles);
     }
 }
