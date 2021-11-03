@@ -1,16 +1,16 @@
 package com.hz.authority.management.sys.constant;
 
 import io.jsonwebtoken.SignatureAlgorithm;
-import lombok.AllArgsConstructor;
 
 /**
  * @program: authority-management-sys
  * @author: zgr
  * @create: 2021-07-26 09:59
  **/
-@AllArgsConstructor
-public class Constant {
 
+public class Constant {
+    private Constant() {
+    }
 
     /**
      * 产生jwt定义的时间常量，实际使用中可以作为配置项加载进系统中

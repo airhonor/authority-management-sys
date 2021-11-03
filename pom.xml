@@ -31,6 +31,11 @@
         <commons-io.version>2.6</commons-io.version>
         <javadoc.version>3.0.0</javadoc.version>
         <maven-release-plugin.version>2.5.3</maven-release-plugin.version>
+
+        <sonar.exclusions>
+            src/main/java/com/.../domain/model/**/*,
+            src/main/java/com/.../exchange/**/*
+        </sonar.exclusions>
     </properties>
 
     <dependencyManagement>
